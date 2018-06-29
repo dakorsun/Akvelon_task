@@ -22,13 +22,13 @@ body {
 }
 
 .title .addBtn {
-	position: absolute;
+	position: fixed;
 	right: 0;
-	top: 0;
-	width: 20%;
-	height: 100%;
-	/*background: grey;*/
-	border-radius: 0 10px 10px 0;
+	bottom: 0;
+	width: 80px;
+	height: 80px;
+	background:  #ffcc66;
+	border-radius: 10px 0 0 0;
 	font-size: 28px;
 }
 
@@ -43,19 +43,70 @@ body {
 
 .Image-holder {
 	display: inline-block;
-	width: 49%;
-	margin-top: 10px;
+	width: 100%;
+	margin: 10px 0 0 0;
 	overflow: hidden;
+	position: relative;
+
+	border-radius: 10px;
 	
 }
 
-.Image-holder:nth-of-type(2n){
-	margin-right: 0;
-	margin-left: 2%;
-}
+
 
 .Image-holder img{
 	width: 100%;
 	border-radius: 10px;
 
+}
+
+.Image-holder .closer {
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+
+	width: 80px;
+	height: 150px;
+	margin: 0 auto 0;
+	vertical-align: middle;
+	position: absolute;
+	right: -80px;
+	top: 0;
+	background: rgba(255, 153, 0, .5);
+	font-size: 16px;
+	line-height: 100%;
+
+	border-radius: 0 0 0 10px;
+	opacity: 60%;
+}
+
+
+.open {
+  animation: open .5s ease-in;
+  animation-fill-mode: forwards;
+
+}
+
+.close {
+  animation: close .5s ease-in;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes open{
+  from {
+
+  }
+  to { 
+    transform: translateX(-80px);
+  }
+}
+
+@keyframes close{
+  from {
+    transform: translateX(-80px);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

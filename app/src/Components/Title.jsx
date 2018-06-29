@@ -9,8 +9,8 @@ class Title extends Component {
 
 	}
 
-	addPicture(e){
-		this.props.liftUpAddEvent;
+	addPicture(){
+		this.props.liftUpAddEvent();
 		console.log('huy');
 	}
 

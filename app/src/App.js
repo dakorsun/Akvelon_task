@@ -3,6 +3,7 @@ import './App.css';
 import Title from './Components/Title';
 import Showblock from './Components/Showblock';
 import links from "./links";
+import shortid from 'shortid';
 
 
 class App extends Component {
@@ -22,50 +23,95 @@ class App extends Component {
 
     this.state = {
       performedLinks: performedLinks,
-      indexesToOpen: [3, 5, 10, 16, 1, 0, 8]
+      indexesToOpen: [
+        {
+          key: shortid.generate(),
+          id: 10
+        },
+        {
+          key: shortid.generate(),
+          id: 16
+        },
+        {
+          key: shortid.generate(),
+          id: 3
+        },
+        {
+          key: shortid.generate(),
+          id: 5
+        },
+        {
+          key: shortid.generate(),
+          id: 1
+        },
+        {
+          key: shortid.generate(),
+          id: 0
+        },
+        {
+          key: shortid.generate(),
+          id: 8
+        }    
+      ]
     }
 
-    let array = this.state.performedLinks,
-      indexes = this.state.indexesToOpen;
 
     this.generateNewPicIndex = this.generateNewPicIndex.bind(this);
-    this.makeInterimArray = this.makeInterimArray.bind(this);
+    this.removeLink = this.removeLink.bind(this);
 
      
 
   }
 
-  makeInterimArray(array, indexes){
-    let result = array.map((i) => {
-      if (!(indexes.indexOf(i.id) + 1)){
-        return i;
+  generateNewPicIndex(){
+
+    let x = Math.floor(Math.random() * (this.state.performedLinks.length))
+    let arr = this.state.indexesToOpen;
+      x = {
+        key: shortid.generate(),
+        id: x
       }
-    })
-    return result;
+    arr[arr.length] = x;
+    
+    this.setState({
+      indexesToOpen: arr
+    });    
+    console.log(this.state.indexesToOpen)
+
+
+   
   }
 
-  generateNewPicIndex(array, indexes){
 
-    let interimArray = this.makeInterimArray(array, indexes);
+  removeLink(id){
     
-    console.log(interimArray);
+    let array = this.state.indexesToOpen;
 
+    for(let i = 0; i < array.length; i++){
+      if(array[i].key === id){
+        array.splice(i, 1);
+      }
+    }
+
+    this.setState({
+      indexesToOpen: array
+    })
   
 
   }
 
 
   render() {
-    console.log(this.state.performedLinks)
 
     return (
       <div>
         <Title 
-          liftUpAddEvent = {this.generateNewPicIndex()}
+          liftUpAddEvent = {this.generateNewPicIndex}
         />
         <Showblock 
            indexesToOpen = {this.state.indexesToOpen}
            performedLinks = {this.state.performedLinks}
+           liftUpRemoveEvent = {this.removeLink}
         />
       </div>
     );
