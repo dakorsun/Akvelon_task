@@ -2,27 +2,60 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body {
+	padding: 10% 20%;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.title {
+	font-family: 'Markazi Text', serif;
+	font-size: 32px;
+	background: #ffcc66;
+	box-shadow: inset 0 0 80px -10px #996600;
+	border-radius: 10px;
+	text-align: center;
+
+	height: 80px;
+	line-height: 80px;
+	width: 100%;
+
+	position: relative;
 }
 
-.App-title {
-  font-size: 1.5em;
+.title .addBtn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 20%;
+	height: 100%;
+	/*background: grey;*/
+	border-radius: 0 10px 10px 0;
+	font-size: 28px;
 }
 
-.App-intro {
-  font-size: large;
+.title .addBtn:hover {
+	box-shadow: inset 0 0 80px -10px #996600;
+	cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.Showblock {
+	text-align: justify;
+}
+
+.Image-holder {
+	display: inline-block;
+	width: 49%;
+	margin-top: 10px;
+	overflow: hidden;
+	
+}
+
+.Image-holder:nth-of-type(2n){
+	margin-right: 0;
+	margin-left: 2%;
+}
+
+.Image-holder img{
+	width: 100%;
+	border-radius: 10px;
+
 }
